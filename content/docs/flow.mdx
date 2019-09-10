@@ -32,34 +32,40 @@ transitions.
   current Frame from `current` to `ahead` while animating the new current Frame
   from `behind` to `current`.
 
-Its defaults are:
+Here's an example override showing the default transitions:
 
 ```js
-const variants = {
-	behind: {
-		x: '0%',
-		filter: 'brightness(50%)',
-		transition: {
-			ease: [0.23, -0.04, 0.31, 1.01],
-			duration: 0.36,
+import { Overrides } from 'framer'
+
+export function FlowOverride(): Override {
+	return {
+		variants: {
+			behind: {
+				x: '0%',
+				filter: 'brightness(50%)',
+				transition: {
+					ease: [0.23, -0.04, 0.31, 1.01],
+					duration: 0.36,
+				},
+			},
+			current: {
+				x: '0%',
+				filter: 'brightness(100%)',
+				transition: {
+					ease: [0.23, -0.04, 0.31, 1.01],
+					duration: 0.36,
+				},
+			},
+			ahead: {
+				x: '100%',
+				filter: 'brightness(100%)',
+				transition: {
+					ease: [0.23, -0.04, 0.31, 1.01],
+					duration: 0.28,
+				},
+			},
 		},
-	},
-	current: {
-		x: '0%',
-		filter: 'brightness(100%)',
-		transition: {
-			ease: [0.23, -0.04, 0.31, 1.01],
-			duration: 0.36,
-		},
-	},
-	ahead: {
-		x: '100%',
-		filter: 'brightness(100%)',
-		transition: {
-			ease: [0.23, -0.04, 0.31, 1.01],
-			duration: 0.28,
-		},
-	},
+	}
 }
 ```
 
